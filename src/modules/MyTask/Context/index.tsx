@@ -24,11 +24,13 @@ export const MyTaskContext = createContext<ICtx | undefined>(undefined);
 
 export const MyTaskProvider: FC<PropsWithChildren> = ({ children }) => {
   //------------------------------------ state --------------------------------
+
   const [data, setData] = useState<IGetData[]>([]);
 
   const [loading, setLoading] = useState<boolean>(false);
 
   //-------------------------------------- func --------------------------------
+
   const getData = async () => {
     setLoading(true);
     try {

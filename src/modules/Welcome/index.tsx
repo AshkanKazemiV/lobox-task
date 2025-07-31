@@ -7,7 +7,7 @@ export const WelcomeToMyTask: FC = () => {
   return (
     <WelcomeToMyTaskContainer>
       <p className="welcomeMessage">Welcome to My Task!</p>
-      <p className="description">My name is Ashkan Kazemi</p>
+      <p className="description">Ashkan Kazemi</p>
       <Link to={Routes.task}>See my task</Link>
     </WelcomeToMyTaskContainer>
   );

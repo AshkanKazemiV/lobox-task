@@ -24,7 +24,7 @@ export const EditableSelectRaw = () => {
       }
     };
 
-    document.addEventListener("click", handleClickOutside); // ✅ click بهتره
+    document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
@@ -69,12 +69,6 @@ export const EditableSelectRaw = () => {
         onFocus={() => setShowDropdown(true)}
         className="selectInput"
       />
-      {/* <span
-        className="toggleIcon"
-        onClick={() => setShowDropdown((prev) => !prev)}
-      >
-        {showDropdown ? "▲" : "▼"}
-      </span> */}
       <img src="icon/dropdown.svg" alt="" className="toggleIcon" />
       {showDropdown && filteredData.length > 0 && (
         <ul className="dropdown">

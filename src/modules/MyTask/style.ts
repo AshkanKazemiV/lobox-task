@@ -6,7 +6,6 @@ export const MyTaskContainer = styled.div`
   justify-content: center;
   align-items: start;
   gap: 24px;
-  /* flex-direction: column; */
   width: calc(100vw);
   height: calc(100vh - 200px);
 `;
@@ -15,7 +14,6 @@ export const EditableSelectRawContainer = styled.div<{
   $showDropdown: boolean;
 }>`
   gap: 8px;
-  /* width: 300px; */
   position: relative;
   .toggleIcon {
     position: absolute;
