@@ -65,6 +65,7 @@ export const EditableSelectRawContainer = styled.div<{
     }
     .selected {
       background-color: #e6f4ff;
+      font-weight: 600;
     }
   }
 `;
