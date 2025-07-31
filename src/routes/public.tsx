@@ -8,7 +8,7 @@ export const PublicRoutes: RouteObject[] = [
     element: <Outlet />,
     children: [
       {
-        path: Routes.welcome,
+        index: true,
         element: <WelcomeToMyTaskPage />,
       },
       {
