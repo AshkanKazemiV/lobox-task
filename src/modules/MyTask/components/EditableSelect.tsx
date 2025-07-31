@@ -86,7 +86,7 @@ export const EditableSelectRaw = () => {
             <li
               key={item.id}
               onClick={() => handleSelect(item.name)}
-              className="dropdownItems"
+              className={`${item.name === inputValue ? "selected" : ""}`}
             >
               {item.name}
             </li>

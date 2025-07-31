@@ -63,5 +63,8 @@ export const EditableSelectRawContainer = styled.div<{
       border-bottom: 1px solid #ccc;
       list-style: none;
     }
+    .selected {
+      background-color: #e6f4ff;
+    }
   }
 `;
