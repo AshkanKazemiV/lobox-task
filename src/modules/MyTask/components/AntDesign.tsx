@@ -61,7 +61,7 @@ export const EditableSelectWithAnt = () => {
             }
             options={data.map((item) => ({
               label: item.name,
-              value: item.name,
+              value: item.id,
             }))}
             onInputKeyDown={handleKeyDown}
             listHeight={150}
