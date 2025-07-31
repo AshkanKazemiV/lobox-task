@@ -27,6 +27,7 @@ export const EditableSelectRawContainer = styled.div<{
     font-size: 12px;
     color: rgba(0, 0, 0, 0.45);
     margin-inline-start: 40px;
+    margin-bottom: 0;
   }
   .selectInput {
     width: 300px;
@@ -50,9 +51,9 @@ export const EditableSelectRawContainer = styled.div<{
     border-top: none;
     z-index: 1000;
     max-height: 150px;
-    width: 317px;
+    width: 300px;
     overflow-y: auto;
-    margin-block-start: 2px;
+    margin-block-start: -10px;
     margin-block-end: 0;
     padding-inline-start: 0;
     border-radius: 8px;
