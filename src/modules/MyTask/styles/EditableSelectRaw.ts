@@ -1,15 +1,5 @@
 import styled from "styled-components";
 
-export const MyTaskContainer = styled.div`
-  margin: 200px 0 0;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  gap: 24px;
-  width: calc(100vw);
-  height: calc(100vh - 200px);
-`;
-
 export const EditableSelectRawContainer = styled.div<{
   $showDropdown: boolean;
 }>`
@@ -32,6 +22,11 @@ export const EditableSelectRawContainer = styled.div<{
     font-size: 14px;
     line-height: 30px;
     padding-inline-end: 8px;
+  }
+  .help {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.45);
+    margin-inline-start: 40px;
   }
   .selectInput {
     width: 300px;

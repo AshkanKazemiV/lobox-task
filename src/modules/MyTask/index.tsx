@@ -1,6 +1,6 @@
 import { EditableSelectWithAnt } from "./components/AntDesign";
 import { EditableSelectRaw } from "./components/EditableSelect";
-import { MyTaskContainer } from "./style";
+import { MyTaskContainer } from "./styles/MyTask";
 
 export const MyTask = () => {
   return (

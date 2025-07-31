@@ -1,7 +1,8 @@
-import { Col, Row, Select, message } from "antd";
+import { Col, Select, message } from "antd";
 import { useState } from "react";
-import { useMyTask } from "../Context";
 import FormItem from "antd/es/form/FormItem";
+import { useMyTask } from "../Context";
+import { EditableSelectWithAntContainer } from "../styles/EditableSelectWithAnt";
 
 export const EditableSelectWithAnt = () => {
   const {
@@ -22,7 +23,7 @@ export const EditableSelectWithAnt = () => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && searchValue) {
       const exists = data.some(
-        (item) => item.name.toLowerCase() === searchValue.toLowerCase()
+        (item) => item.name.toLowerCase().trim() === searchValue.toLowerCase()
       );
       if (!exists) {
         const newItem = {
@@ -37,9 +38,13 @@ export const EditableSelectWithAnt = () => {
   };
 
   return (
-    <Row>
+    <EditableSelectWithAntContainer>
       <Col span={24}>
-        <FormItem name="name" label="Ant Design">
+        <FormItem
+          name="name"
+          label="Ant Design"
+          help="Type a new value and press Enter to add it to the list."
+        >
           <Select
             style={{ width: 300 }}
             showSearch
@@ -64,6 +69,6 @@ export const EditableSelectWithAnt = () => {
           />
         </FormItem>
       </Col>
-    </Row>
+    </EditableSelectWithAntContainer>
   );
 };

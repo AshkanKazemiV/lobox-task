@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useMyTask } from "../Context";
-import { EditableSelectRawContainer } from "../style";
+import { EditableSelectRawContainer } from "../styles/EditableSelectRaw";
 
 export const EditableSelectRaw = () => {
   const {
@@ -69,6 +69,9 @@ export const EditableSelectRaw = () => {
         onFocus={() => setShowDropdown(true)}
         className="selectInput"
       />
+      <p className="help">
+        Type a new value and press Enter to add it to the list.
+      </p>
       <img src="icon/dropdown.svg" alt="" className="toggleIcon" />
       {showDropdown && filteredData.length > 0 && (
         <ul className="dropdown">
