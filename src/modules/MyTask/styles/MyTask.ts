@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const MyTaskContainer = styled.div`
-  margin: 200px 0 0;
+  padding-top: 200px;
   display: flex;
   justify-content: center;
   align-items: start;
