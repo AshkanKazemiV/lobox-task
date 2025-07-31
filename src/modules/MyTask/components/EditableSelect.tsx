@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { useMyTask } from "../Context";
 import { EditableSelectRawContainer } from "../styles/EditableSelectRaw";
 
@@ -9,8 +9,8 @@ export const EditableSelectRaw = () => {
   } = useMyTask();
 
   const [inputValue, setInputValue] = useState<string>("");
-
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -23,7 +23,6 @@ export const EditableSelectRaw = () => {
         setShowDropdown(false);
       }
     };
-
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
@@ -31,28 +30,32 @@ export const EditableSelectRaw = () => {
   const handleSelect = (name: string) => {
     setInputValue(name);
     setShowDropdown(false);
+    setIsTyping(false);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && inputValue.trim()) {
+      const trimmed = inputValue.trim();
       const exists = data.some(
-        (item) => item.name.toLowerCase() === inputValue.toLowerCase()
+        (item) => item.name.toLowerCase() === trimmed.toLowerCase()
       );
       if (!exists) {
-        const newItem = {
-          id: Date.now(),
-          name: inputValue.trim(),
-        };
+        const newItem = { id: Date.now(), name: trimmed };
         setData((prev) => [...prev, newItem]);
-        setInputValue(inputValue.trim());
-        setShowDropdown(false);
+        setInputValue("");
+        setIsTyping(false);
       }
     }
   };
 
-  const filteredData = data.filter((item) =>
-    item.name.toLowerCase().includes(inputValue.toLowerCase())
-  );
+  const filteredData = useMemo(() => {
+    if (isTyping && inputValue) {
+      return data.filter((item) =>
+        item.name.toLowerCase().includes(inputValue.toLowerCase())
+      );
+    }
+    return data;
+  }, [data, inputValue, isTyping]);
 
   return (
     <EditableSelectRawContainer ref={containerRef} $showDropdown={showDropdown}>
@@ -63,10 +66,14 @@ export const EditableSelectRaw = () => {
         value={inputValue}
         onChange={(e) => {
           setInputValue(e.target.value);
+          setIsTyping(true);
           setShowDropdown(true);
         }}
+        onFocus={() => {
+          setShowDropdown(true);
+          setIsTyping(false);
+        }}
         onKeyDown={handleKeyDown}
-        onFocus={() => setShowDropdown(true)}
         className="selectInput"
       />
       <p className="help">
