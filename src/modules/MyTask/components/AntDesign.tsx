@@ -1,4 +1,4 @@
-import { Col, Select, message } from "antd";
+import { App, Col, Select } from "antd";
 import { useState } from "react";
 import FormItem from "antd/es/form/FormItem";
 import { useMyTask } from "../Context";
@@ -9,6 +9,8 @@ export const EditableSelectWithAnt = () => {
     value: { data, loading },
     dispatch: { setData },
   } = useMyTask();
+
+  const { message } = App.useApp();
 
   const [selectedItem, setSelectedItem] = useState<string | undefined>(
     undefined
@@ -32,7 +34,6 @@ export const EditableSelectWithAnt = () => {
         };
         setData((prev) => [...prev, newItem]);
         setSelectedItem(searchValue);
-        message.success(`Added new item: ${searchValue}`);
       }
     }
   };
