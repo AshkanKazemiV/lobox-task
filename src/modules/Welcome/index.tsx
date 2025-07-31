@@ -6,7 +6,7 @@ import { FC } from "react";
 export const WelcomeToMyTask: FC = () => {
   return (
     <WelcomeToMyTaskContainer>
-      <p className="welcomeMessage">Welcome to My Task!</p>
+      <p className="welcomeMessage">Welcome To My Technical Assignment!</p>
       <p className="description">Ashkan Kazemi</p>
       <Link to={Routes.task}>See my task</Link>
     </WelcomeToMyTaskContainer>
