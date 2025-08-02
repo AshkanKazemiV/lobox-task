@@ -9,8 +9,8 @@ export const EditableSelectRaw = () => {
   } = useMyTask();
 
   const [inputValue, setInputValue] = useState<string>("");
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [isTyping, setIsTyping] = useState(false);
+  const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const [isTyping, setIsTyping] = useState<boolean>(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
 

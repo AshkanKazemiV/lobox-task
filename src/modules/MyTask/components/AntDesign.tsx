@@ -1,5 +1,5 @@
-import { App, Col, Select } from "antd";
-import { useState } from "react";
+import { Col, Select } from "antd";
+import { KeyboardEvent, useState } from "react";
 import FormItem from "antd/es/form/FormItem";
 import { useMyTask } from "../Context";
 import { EditableSelectWithAntContainer } from "../styles/EditableSelectWithAnt";
@@ -9,8 +9,6 @@ export const EditableSelectWithAnt = () => {
     value: { data, loading },
     dispatch: { setData },
   } = useMyTask();
-
-  const { message } = App.useApp();
 
   const [selectedItem, setSelectedItem] = useState<string | undefined>(
     undefined
@@ -22,10 +20,11 @@ export const EditableSelectWithAnt = () => {
     setSelectedItem(value);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && searchValue) {
       const exists = data.some(
-        (item) => item.name.toLowerCase().trim() === searchValue.toLowerCase()
+        (item) =>
+          item.name.toLowerCase().trim() === searchValue.toLowerCase().trim()
       );
       if (!exists) {
         const newItem = {
@@ -33,7 +32,7 @@ export const EditableSelectWithAnt = () => {
           name: searchValue,
         };
         setData((prev) => [...prev, newItem]);
-        setSelectedItem(searchValue);
+        setSelectedItem(undefined);
       }
     }
   };
