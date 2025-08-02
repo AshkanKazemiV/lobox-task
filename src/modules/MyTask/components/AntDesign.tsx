@@ -21,7 +21,7 @@ export const EditableSelectWithAnt = () => {
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && searchValue) {
+    if (e.key === "Enter" && searchValue.trim()) {
       const exists = data.some(
         (item) =>
           item.name.toLowerCase().trim() === searchValue.toLowerCase().trim()

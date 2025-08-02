@@ -37,7 +37,7 @@ export const EditableSelectRaw = () => {
     if (e.key === "Enter" && inputValue.trim()) {
       const trimmed = inputValue.trim();
       const exists = data.some(
-        (item) => item.name.toLowerCase() === trimmed.toLowerCase()
+        (item) => item.name.toLowerCase().trim() === trimmed.toLowerCase()
       );
       if (!exists) {
         const newItem = { id: Date.now(), name: trimmed };
@@ -51,7 +51,7 @@ export const EditableSelectRaw = () => {
   const filteredData = useMemo(() => {
     if (isTyping && inputValue) {
       return data.filter((item) =>
-        item.name.toLowerCase().includes(inputValue.toLowerCase())
+        item.name.toLowerCase().trim().includes(inputValue.toLowerCase().trim())
       );
     }
     return data;
