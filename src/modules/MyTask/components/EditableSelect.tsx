@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect, useMemo, KeyboardEvent } from "react";
 import { useMyTask } from "../Context";
 import { EditableSelectRawContainer } from "../styles/EditableSelectRaw";
 
@@ -33,7 +33,7 @@ export const EditableSelectRaw = () => {
     setIsTyping(false);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && inputValue.trim()) {
       const trimmed = inputValue.trim();
       const exists = data.some(
